@@ -114,6 +114,7 @@ filetype plugin indent on    " required
 " Special things for specific filetypes "{{{
 autocmd BufEnter *.markdown colorscheme badwolf
 autocmd BufEnter *.hs       set nospell
+autocmd BufEnter *.rev      set nospell
 "}}}
 " Variables and Colors"{{{
 " command-t
