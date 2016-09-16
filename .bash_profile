@@ -28,6 +28,8 @@ alias vim='/usr/local/bin/vim'
 alias vimd='cd ~/.vim'
 alias vimb='cd ~/.vim/bundle'
 alias note='cd ~/ComputerScience/notes' 
+alias cabal='/usr/local/bin/cabal'
+alias gpg='/usr/local/Cellar/gnupg/1.4.21/bin/gpg1'
 PATH="$PATH":/Users/taha/ComputerScience/Sage/SageMath
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
@@ -36,8 +38,11 @@ export PATH=$PATH:/Users/taha/ComputerScience/Sage/SageMath:/usr/local/bin/mysql
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH
 
-# git tab completion
+# tab completion
 source ~/.git-completion.bash
+
+
+
 
 # colors!
 green="\[\033[0;32m\]"
@@ -50,10 +55,10 @@ reset="\[\033[0m\]"
 # Change command prompt
 source ~/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
-# '\u' adds the name of the current user to the prompt
-# '\$(__git_ps1)' adds git-related stuff
-# '\W' adds the name of the current directory
 export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
+    # '\u' adds the name of the current user to the prompt
+    # '\$(__git_ps1)' adds git-related stuff
+    # '\W' adds the name of the current directory
 
 ##################################################
 

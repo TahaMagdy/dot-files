@@ -1,6 +1,7 @@
 " Author : Taha Magdy
 
 " Math"{{{
+map! <C-v>fa ∀
 map! <C-v>ll →
 map! <C-v>hh ⇌
 map! <C-v>kk ↑
@@ -60,6 +61,7 @@ map <C-l> :cd %:h<CR>
 syntax on
 colorscheme default
 set encoding=utf-8
+set noswapfile
 set arabicshape
 set autoread " reload vimrc :so $MYVIMRC
 set number
@@ -112,7 +114,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "}}}
 " Special things for specific filetypes "{{{
-autocmd BufEnter *.markdown colorscheme badwolf
+"autocmd BufEnter *.markdown colorscheme badwolf
 autocmd BufEnter *.hs       set nospell
 autocmd BufEnter *.rev      set nospell
 "}}}
