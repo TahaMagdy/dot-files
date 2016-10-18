@@ -1,0 +1,5 @@
+hi CmdLine -append font-size:17px;    # Command line font
+highlight StatusLine font-size: 17px;  # the line that shows meta info.
+highlight CompGroup font-size: 17px;
+highlight CompTitle color: magenta;  font-size: 18px;
+highlight CompItem padding: 1 1;
