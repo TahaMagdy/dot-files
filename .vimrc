@@ -139,6 +139,10 @@ highlight PmenuSel ctermfg=220 ctermbg=242
     " Runtime Manipulation 
     execute pathogen#infect()
 "}}}
-{{{ macVim
+" {{{ macVim
 set guifont=Menlo:h20
-}}}
+set guicursor=a:block
+set guicursor=a:blinkwait700
+set guicursor=a:blinkon400
+set guicursor=a:blinkoff250
+" }}}
