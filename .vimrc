@@ -4,6 +4,7 @@
 map! <C-v>fa ∀
 map! <C-v>ll →
 map! <C-v>hh ⇌
+map! <C-v>sr √
 map! <C-v>kk ↑
 map! <C-v>jj ↓
 map! <C-v>= ∝
@@ -117,6 +118,7 @@ filetype plugin indent on    " required
 "autocmd BufEnter *.markdown colorscheme badwolf
 autocmd BufEnter *.hs       set nospell
 autocmd BufEnter *.rev      set nospell
+autocmd BufEnter *          set noautoindent 
 "}}}
 " Variables and Colors"{{{
 " command-t
@@ -137,3 +139,6 @@ highlight PmenuSel ctermfg=220 ctermbg=242
     " Runtime Manipulation 
     execute pathogen#infect()
 "}}}
+{{{ macVim
+set guifont=Menlo:h20
+}}}

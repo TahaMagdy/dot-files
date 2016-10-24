@@ -12,10 +12,14 @@
 CLICOLOR=1
 export CLICOLOR=1
 
+# The awesomeness 
+set -o vi
+
 # My Aliases > # To refresh: source ~/.bash_profile
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 alias wb='cd /Library/WebServer/Documents/'
+alias cl='clear'
 alias lss='ls -lS'     
 alias lsd='ls -lSd */'
             # some ls options #{{{
