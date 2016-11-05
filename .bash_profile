@@ -57,7 +57,7 @@ reset="\[\033[0m\]"
 
 
 # Change command prompt
-source ~/git-prompt.sh
+source ~/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
     # '\u' adds the name of the current user to the prompt

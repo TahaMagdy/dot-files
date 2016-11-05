@@ -54,7 +54,15 @@ map <C-n> :bnext<CR>
 map <C-p> :bprev<CR>
 map <C-a> :noh<CR>
 map <C-x> :TableModeToggle<CR>
-map <C-l> :cd %:h<CR>
+map <C-b> :cd %:h<CR>
+
+map rmb :bdelete<Cr>
+map cm  :CommandT<Cr>
+map O   O<Esc>
+map o   o<Esc>
+map s=  :set spell<Cr>
+map s-  :set nospell<Cr>
+
 
 
 "}}}
@@ -78,6 +86,7 @@ set shiftwidth=4
 set autoindent " indent newlines
 set foldcolumn=0
 set wrap
+set textwidth=81
 set linebreak
 set omnifunc=syntaxcomplete#Complete
 set incsearch
@@ -105,7 +114,7 @@ set nocompatible              " be iMproved, required
 set showcmd " Doesn't work but after nocompatible
 filetype off                  " required
 
-""set the runtime path to include Vundle and initialize
+"set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
@@ -114,17 +123,23 @@ call vundle#begin()
 call vundle#end()            " required
 filetype plugin indent on    " required
 "}}}
-" Special things for specific filetypes "{{{
+" Special stuff for specific filetypes "{{{
 "autocmd BufEnter *.markdown colorscheme badwolf
 autocmd BufEnter *.hs       set nospell
 autocmd BufEnter *.rev      set nospell
-autocmd BufEnter *          set noautoindent 
+autocmd BufEnter *.mail     set nonumber norelativenumber
+autocmd BufEnter *.txt      set noautoindent 
 "}}}
-" Variables and Colors"{{{
+" Global Variables and Colors"{{{
 " command-t
 let g:CommandTHighlightColor='PmenuSel' " Pmenu OR PmenuSel
 let g:CommandTMatchWindowReverse=1
-"
+let g:CommandTMaxHeight=10
+let g:CommandTCancelMap=['<C-[>', '<C-c>']
+
+
+
+
 "Omni menu colors 
 highlight PmenuSel ctermfg=220 ctermbg=242 
 "hi Search ctermfg=Yellow ctermbg=NONE cterm=bold " Search highlighting 
@@ -136,13 +151,33 @@ highlight PmenuSel ctermfg=220 ctermbg=242
     " mapping : (space+n) to navigate directories and files 
     let mapleader=" "
     map <leader>n :Explore<cr> 
-    " Runtime Manipulation 
-    execute pathogen#infect()
+    " Runtime Manipulation -- Activating Pathogen
+    execute pathogen#infect() 
 "}}}
 " {{{ macVim
-set guifont=Menlo:h20
-set guicursor=a:block
-set guicursor=a:blinkwait700
-set guicursor=a:blinkon400
-set guicursor=a:blinkoff250
+if has("gui")
+    set guifont=Menlo:h20
+    set guicursor=a:block
+    set guicursor=a:blinkwait700
+    set guicursor=a:blinkon400
+    set guicursor=a:blinkoff250
+endif
 " }}}
+" Disabling the directional keys"{{{
+map  <up>     <nop>
+map  <down>   <nop>
+map  <left>   <nop>
+map  <right>  <nop>
+imap <up>     <nop> 
+imap <down>   <nop>
+imap <left>   <nop>
+imap <right>  <nop>
+"}}}
+" Going into normal mode -- NO esc key any more! "{{{
+
+" Press the j then k in row
+imap jk     <Esc>
+
+
+
+""}}}
