@@ -61,8 +61,8 @@ map <C-a> :noh<CR>
 map <C-x> :TableModeToggle<CR>
 map <C-c> :cd %:h<CR>
 
-map rmb :bdelete<Cr>
 map cm  :CommandT<Cr>
+map rmb :bdelete<Cr>
 map s=  :set spell<Cr>
 map s-  :set nospell<Cr>
 "map O   O<Esc>
@@ -77,7 +77,11 @@ map <C-k> <C-w>-
 " NerdTree
 let mapleader=" "
 map <leader>n :NERDTree<cr> 
-map <leader>c :NERDTreeClose<cr>
+map <leader>cn :NERDTreeClose<cr>
+
+" Taglist
+map <leader>t  :Tlist<cr>
+map <leader>ct :TlistClose<cr>
 "}}}
 " set commands"{{{
 syntax on
