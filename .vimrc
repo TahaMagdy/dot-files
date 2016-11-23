@@ -198,3 +198,7 @@ let g:tagbar_width   = 25
 " TagList options {{{
 
 " }}}
+" Close Omni-Completion window when a selection is" made, "{{{
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"}}}
