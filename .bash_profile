@@ -71,3 +71,12 @@ echo "  Hello, I'm .bash_profile and I love you <3!
     You can put some reminders in here!
     .
     "
+
+##
+# Your previous /Users/taha/.bash_profile file was backed up as /Users/taha/.bash_profile.macports-saved_2016-11-19_at_01:05:30
+##
+
+# MacPorts Installer addition on 2016-11-19_at_01:05:30: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
