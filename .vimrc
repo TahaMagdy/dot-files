@@ -167,6 +167,11 @@ imap <down>   <nop>
 imap <left>   <nop>
 imap <right>  <nop>
 "}}}
+" Close Omni-Completion window when a selection is" made "{{{
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+set completeopt-=preview
+"}}}
 " Going into normal mode -- NO esc key any more! "{{{
 " Press the j then k in row
 imap jk     <Esc>
@@ -198,8 +203,6 @@ let g:tagbar_width   = 25
 " TagList options {{{
 
 " }}}
-" Close Omni-Completion window when a selection is" made, "{{{
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-set completeopt-=preview
-"}}}
+" Gitgutter option {{{
+set diffopt+=vertical
+" }}}
