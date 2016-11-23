@@ -59,17 +59,16 @@ map <C-b> :cd %:h<CR>
 
 map rmb :bdelete<Cr>
 map cm  :CommandT<Cr>
-"map O   O<Esc>
-"map o   o<Esc>
 map s=  :set spell<Cr>
 map s-  :set nospell<Cr>
+"map O   O<Esc>
+"map o   o<Esc>
 
-" USE :join instead of J
-"nmap J 5j
-"nmap K 5k
-"xmap J 5j
-"xmap K 5k
-"""
+" Resizing 
+map <C-h> <C-w><
+map <C-l> <C-w>>
+map <C-j> <C-w>+
+map <C-k> <C-w>-
 "}}}
 " set commands"{{{
 syntax on
