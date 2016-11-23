@@ -1,6 +1,10 @@
 " Author : Taha Magdy
 
 
+" Activating Pathogen -- Runtime manipulations"{{{
+" Important for some plugins like (NERDTree)
+execute pathogen#infect()
+"}}}
 " Math"{{{
 map! <C-v>fa ∀
 map! <C-v>ll →
@@ -55,7 +59,7 @@ map <C-n> :bnext<CR>
 map <C-p> :bprev<CR>
 map <C-a> :noh<CR>
 map <C-x> :TableModeToggle<CR>
-map <C-b> :cd %:h<CR>
+map <C-c> :cd %:h<CR>
 
 map rmb :bdelete<Cr>
 map cm  :CommandT<Cr>
@@ -69,6 +73,11 @@ map <C-h> <C-w><
 map <C-l> <C-w>>
 map <C-j> <C-w>+
 map <C-k> <C-w>-
+
+" NerdTree
+let mapleader=" "
+map <leader>n :NERDTree<cr> 
+map <leader>c :NERDTreeClose<cr>
 "}}}
 " set commands"{{{
 syntax on
@@ -135,30 +144,6 @@ autocmd BufEnter __Tag_List__   set nospell
 autocmd BufEnter *.mail         set nonumber norelativenumber
 autocmd BufEnter *.txt          set noautoindent 
 "}}}
-" Global Variables and Colors"{{{
-" command-t
-let g:CommandTHighlightColor='PmenuSel' " Pmenu OR PmenuSel
-let g:CommandTMatchWindowReverse=1
-let g:CommandTMaxHeight=10
-let g:CommandTCancelMap=['<C-[>', '<C-c>']
-
-
-
-
-"Omni menu colors 
-highlight PmenuSel ctermfg=220 ctermbg=242 
-"hi Search ctermfg=Yellow ctermbg=NONE cterm=bold " Search highlighting 
-" ctermfg words color
-" ctermfg words background
-"
-" Explorer Mode - Tree style 
-    let g:netrw_liststyle=3
-    " mapping : (space+n) to navigate directories and files 
-    let mapleader=" "
-    map <leader>n :Explore<cr> 
-    " Runtime Manipulation -- Activating Pathogen
-    execute pathogen#infect() 
-"}}}
 " {{{ macVim
 if has("gui")
     set guifont=Menlo:h20
@@ -185,6 +170,23 @@ imap jk     <Esc>
 
 
 ""}}}
+" Command-T options "{{{
+let g:CommandTHighlightColor='PmenuSel' " Pmenu OR PmenuSel
+let g:CommandTMatchWindowReverse=1
+let g:CommandTMaxHeight=10
+let g:CommandTCancelMap=['<C-[>', '<C-c>']
+
+"Omni menu colors 
+highlight PmenuSel ctermfg=220 ctermbg=242 
+
+
+
+"hi Search ctermfg=Yellow ctermbg=NONE cterm=bold " Search highlighting 
+" ctermfg words color
+" ctermfg words background
+
+"
+"}}}
 " Tagbar options {{{
 let g:tagbar_left    = 1
 let g:tagbar_width   = 25
