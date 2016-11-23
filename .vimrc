@@ -1,5 +1,6 @@
 " Author : Taha Magdy
 
+
 " Math"{{{
 map! <C-v>fa ∀
 map! <C-v>ll →
@@ -58,13 +59,17 @@ map <C-b> :cd %:h<CR>
 
 map rmb :bdelete<Cr>
 map cm  :CommandT<Cr>
-map O   O<Esc>
-map o   o<Esc>
+"map O   O<Esc>
+"map o   o<Esc>
 map s=  :set spell<Cr>
 map s-  :set nospell<Cr>
 
-
-
+" USE :join instead of J
+"nmap J 5j
+"nmap K 5k
+"xmap J 5j
+"xmap K 5k
+"""
 "}}}
 " set commands"{{{
 syntax on
@@ -125,10 +130,11 @@ filetype plugin indent on    " required
 "}}}
 " Special stuff for specific filetypes "{{{
 "autocmd BufEnter *.markdown colorscheme badwolf
-autocmd BufEnter *.hs       set nospell
-autocmd BufEnter *.rev      set nospell
-autocmd BufEnter *.mail     set nonumber norelativenumber
-autocmd BufEnter *.txt      set noautoindent 
+autocmd BufEnter *.hs           set nospell
+autocmd BufEnter *.rev          set nospell
+autocmd BufEnter __Tag_List__   set nospell
+autocmd BufEnter *.mail         set nonumber norelativenumber
+autocmd BufEnter *.txt          set noautoindent 
 "}}}
 " Global Variables and Colors"{{{
 " command-t
@@ -174,10 +180,16 @@ imap <left>   <nop>
 imap <right>  <nop>
 "}}}
 " Going into normal mode -- NO esc key any more! "{{{
-
 " Press the j then k in row
 imap jk     <Esc>
 
 
 
 ""}}}
+" Tagbar options {{{
+let g:tagbar_left    = 1
+let g:tagbar_width   = 25
+" }}}
+" TagList options {{{
+
+" }}}
