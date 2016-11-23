@@ -201,4 +201,5 @@ let g:tagbar_width   = 25
 " Close Omni-Completion window when a selection is" made, "{{{
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+set completeopt-=preview
 "}}}
