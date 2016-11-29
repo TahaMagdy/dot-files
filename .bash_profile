@@ -15,13 +15,10 @@ export CLICOLOR=1
 # The awesomeness 
 set -o vi
 set bell-style none
-$if mode=vi
-set keymap vi-command
-    "gg": beginning-of-history
-    "G": end-of-history
-    "\C-l": clear
-    "\C-p": history-search-backward
-$endif
+    $if mode=vi
+    set keymap vi-command
+        "\C-l": clear
+    $endif
 
 # My Aliases > # To refresh: source ~/.bash_profile
 alias mysql=/usr/local/mysql/bin/mysql
