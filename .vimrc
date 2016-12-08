@@ -136,7 +136,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'Valloric/YouCompleteMe'
-    Plugin 'wincent/command-t'
 call vundle#end()            " required
 filetype plugin indent on    " required
 "}}}
