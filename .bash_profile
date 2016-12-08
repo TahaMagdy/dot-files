@@ -41,7 +41,7 @@ alias bp='vim ~/.bash_profile'
 alias note='cd ~/ComputerScience/notes' 
 alias cabal='/usr/local/bin/cabal'
 alias gpg='/usr/local/Cellar/gnupg/1.4.21/bin/gpg1'
-alias grep='grep -P'
+alias grep='grep -n  -P --color=always'
 PATH="$PATH":/Users/taha/ComputerScience/Sage/SageMath
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
