@@ -18,7 +18,9 @@ set bell-style none
     $if mode=vi
     set keymap vi-command
         "\C-l": clear
+        bind -m vi-insert "\C-l":clear-screen
     $endif
+
 
 # My Aliases > # To refresh: source ~/.bash_profile
 alias mysql=/usr/local/mysql/bin/mysql
