@@ -34,11 +34,14 @@ alias lsd='ls -lSd */'
             # -t Time of last edit
             # -U Time of file creation#}}}
 alias vim='/usr/local/bin/vim'
-alias vimd='cd ~/.vim'
-alias vimb='cd ~/.vim/bundle'
+alias vd='cd ~/.vim'
+alias vb='cd ~/.vim/bundle'
+alias vr='vim ~/.vimrc'
+alias bp='vim ~/.bash_profile'
 alias note='cd ~/ComputerScience/notes' 
 alias cabal='/usr/local/bin/cabal'
 alias gpg='/usr/local/Cellar/gnupg/1.4.21/bin/gpg1'
+alias grep='grep -P'
 PATH="$PATH":/Users/taha/ComputerScience/Sage/SageMath
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
