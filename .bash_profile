@@ -18,7 +18,7 @@ set bell-style none
     $if mode=vi
     set keymap vi-command
         "\C-l": clear
-        bind -m vi-insert "\C-l":clear-screen
+        bind -m vi-insert "\C-l":clear-screen # DO NOT PUT A SPACE AFTER THE ':'
     $endif
 
 
