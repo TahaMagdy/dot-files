@@ -114,7 +114,6 @@ set backupskip=*.gpg
 set backupdir=~/.vim/tmp
 set directory=~/.vim/swap " List of directory names for the swap file, separated with commas.
 set backup
-set swapfile
 set shortmess=filnxtToOI
 set backspace=indent,eol,start
 setlocal cm=blowfish
@@ -205,3 +204,5 @@ let g:tagbar_width   = 25
 " Gitgutter option {{{
 set diffopt+=vertical
 " }}}
+
+let g:livepreview_previewer = 'open -a Preview'
