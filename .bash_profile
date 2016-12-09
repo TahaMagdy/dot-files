@@ -15,11 +15,8 @@ export CLICOLOR=1
 # The awesomeness 
 set -o vi
 set bell-style none
-    $if mode=vi
-    set keymap vi-command
-        "\C-l": clear
-        bind -m vi-insert "\C-l":clear-screen # DO NOT PUT A SPACE AFTER THE ':'
-    $endif
+set keymap vi-command
+bind -m vi-insert "\C-l":clear-screen # DO NOT PUT A SPACE AFTER THE ':'
 
 
 # My Aliases > # To refresh: source ~/.bash_profile
