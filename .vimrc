@@ -97,6 +97,7 @@ set spell spl=en
 set showmatch " highlight matching [{()}]
 set hlsearch
 set title
+set formatoptions-=cro " disable auto .. comment
 set expandtab " Convert tab to spaces 
 set tabstop=4 " Remember no space around the `=`
 set shiftwidth=4
