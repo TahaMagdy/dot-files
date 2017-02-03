@@ -1,5 +1,7 @@
 ;; Removing the tool bar
 (tool-bar-mode -1)
+;; Removing scroll bar
+(scroll-bar-mode -1)
 
 ;; Size
 (set-face-attribute 'default nil :height 160)
