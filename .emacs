@@ -3,6 +3,7 @@
 ;; Removing scroll bar
 (scroll-bar-mode -1)
 
+
 ;; Hide startup screen
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
@@ -41,8 +42,17 @@
   (kbd "C-w C-w") 'other-window)
 (require 'evil)
 
-;; Solve the conflict of C-u 
-(global-set-key (kbd "C-u") 'evil-scroll-up)
+;; making the global emacs more like vim
+(global-set-key (kbd "/")       'evil-search-forward)
+(global-set-key (kbd "n")       'evil-search-next)
+(global-set-key (kbd "N")       'evil-search-previous)
+(global-set-key (kbd "C-d")     'evil-scroll-down)
+(global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of C-u
+
+(global-set-key (kbd "C-x k") 'windmove-up)
+(global-set-key (kbd "C-x j") 'windmove-down)
+(global-set-key (kbd "C-x l") 'windmove-left)
+(global-set-key (kbd "C-x h") 'windmove-right)
 
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -54,3 +64,6 @@
  )
 ;; Load the theme at startup
 (load-theme 'espresso t)
+
+;; relative numbers :"D
+(global-relative-line-numbers-mode)
