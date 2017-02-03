@@ -2,6 +2,10 @@
 (tool-bar-mode -1)
 ;; Removing scroll bar
 (scroll-bar-mode -1)
+j
+;; Hide startup screen
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 
 ;; Size
 (set-face-attribute 'default nil :height 160)
