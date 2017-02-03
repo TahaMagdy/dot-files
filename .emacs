@@ -9,6 +9,9 @@
 (setq inhibit-startup-message t)
 (setq package-archive-enable-alist '(("melpa" deft magit)))
 
+;; Disable alarms completely
+(setq ring-bell-function 'ignore)
+
 ;; Size
 (set-face-attribute 'default nil :height 160)
 
@@ -21,7 +24,10 @@
  '(custom-safe-themes
    (quote
     ("4c7a1f0559674bf6d5dd06ec52c8badc5ba6e091f954ea364a020ed702665aa1" "f7eb64b27901812bbdbb91654c2a2e98555fa8d5b256144199925d6c7c0bd3bd" "c924950f6b5b92a064c5ad7063bb34fd3facead47cd0d761a31e7e76252996f7" default)))
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(package-selected-packages
+   (quote
+    (use-package relative-line-numbers org magit linum-relative iedit haskell-mode evil-tutor evil-god-state evil-escape ctags))))
 
 (load "package")
 (package-initialize)
@@ -71,6 +77,7 @@
 (global-set-key (kbd "C-x j") 'windmove-down)
 (global-set-key (kbd "C-x l") 'windmove-left)
 (global-set-key (kbd "C-x h") 'windmove-right)
+
 
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
