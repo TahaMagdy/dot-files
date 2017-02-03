@@ -27,6 +27,8 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
+;;(define-key evil-mode [remap universal-argument] 'evil-scroll-up)
+
 
 (evil-mode t)
 ;; Mappings
@@ -37,8 +39,10 @@
   (kbd "C-d")     'evil-scroll-down
   (kbd "C-u")     'evil-scroll-up
   (kbd "C-w C-w") 'other-window)
-
 (require 'evil)
+
+;; Solve the conflict of C-u 
+(global-set-key (kbd "C-u") 'evil-scroll-up)
 
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
