@@ -27,6 +27,26 @@
 (package-initialize)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
+(use-package linum-relative
+    :ensure t
+    :diminish linum-relative-mode
+    :config
+    (global-linum-mode t)
+    (linum-relative-mode t)
+    (column-number-mode t))
 
 ;;(define-key evil-mode [remap universal-argument] 'evil-scroll-up)
 
@@ -44,8 +64,6 @@
 
 ;; making the global emacs more like vim
 (global-set-key (kbd "/")       'evil-search-forward)
-(global-set-key (kbd "n")       'evil-search-next)
-(global-set-key (kbd "N")       'evil-search-previous)
 (global-set-key (kbd "C-d")     'evil-scroll-down)
 (global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of C-u
 
@@ -65,5 +83,18 @@
 ;; Load the theme at startup
 (load-theme 'espresso t)
 
-;; relative numbers :"D
+;; relative numbers && Customization 
 (global-relative-line-numbers-mode)
+(defun relative-abs-line-numbers-format (offset)
+  "The default formatting function.
+Return the absolute value of OFFSET, converted to string."
+  (if (= 0 offset)
+      (number-to-string (line-number-at-pos))
+    (number-to-string (abs offset))))
+(setq relative-line-numbers-format 'relative-abs-line-numbers-format)
+
+
+;; Escape 
+(evil-escape-mode)
+(setq-default evil-escape-key-sequence "jk" )
+(setq-default evil-escape-delay 0.1)
