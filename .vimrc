@@ -5,26 +5,6 @@
 " Important for some plugins like (NERDTree)
 execute pathogen#infect()
 "}}}
-" Math"{{{
-map! <C-v>fa ∀
-map! <C-v>ll →
-map! <C-v>sr √
-map! <C-v>~ ≈
-map! <C-v>!= ≠
-"}}}
-" Greek"{{{
-map! <C-v>TH Θ
-map! <C-v>PI π
-map! <C-v>SI Σ
-map! <C-v>OM Ω
-map! <C-v>al α
-map! <C-v>be β
-map! <C-v>ga γ
-map! <C-v>de δ
-map! <C-v>ep ε
-map! <C-v>la λ
-map! <C-v>mu μ
-"}}}
 " mappings ^^"{{{
 map <C-n> :bnext<CR>
 map <C-p> :bprev<CR>
