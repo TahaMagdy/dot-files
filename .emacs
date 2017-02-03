@@ -9,11 +9,11 @@
 (setq inhibit-startup-message t)
 (setq package-archive-enable-alist '(("melpa" deft magit)))
 
-;; Disable alarms completely
-(setq ring-bell-function 'ignore)
-
 ;; Size
 (set-face-attribute 'default nil :height 160)
+
+;; Disable alarms completely
+(setq ring-bell-function 'ignore)
 
 ;; Start Emacs in a fullscreen
 (custom-set-variables
@@ -27,7 +27,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (use-package relative-line-numbers org magit linum-relative iedit haskell-mode evil-tutor evil-god-state evil-escape ctags))))
+    (use-package relative-line-numbers org magit linum-relative iedit haskell-mode evil-escape))))
 
 (load "package")
 (package-initialize)
@@ -78,7 +78,6 @@
 (global-set-key (kbd "C-x l") 'windmove-left)
 (global-set-key (kbd "C-x h") 'windmove-right)
 
-
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (custom-set-faces
@@ -105,3 +104,14 @@ Return the absolute value of OFFSET, converted to string."
 (evil-escape-mode)
 (setq-default evil-escape-key-sequence "jk" )
 (setq-default evil-escape-delay 0.1)
+
+(setq-default major-mode 'evil-mode)
+
+
+
+;; Helm
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/helm")
+(require 'helm-config)
+(helm-mode 1)
+
