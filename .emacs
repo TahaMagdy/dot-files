@@ -46,13 +46,6 @@
 (require 'diminish)
 (require 'bind-key)
 
-(use-package linum-relative
-    :ensure t
-    :diminish linum-relative-mode
-    :config
-    (global-linum-mode t)
-    (linum-relative-mode t)
-    (column-number-mode t))
 
 ;;(define-key evil-mode [remap universal-argument] 'evil-scroll-up)
 
