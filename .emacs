@@ -65,7 +65,7 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/helm")
 ;(require 'helm-config)
-(helm-mode 1)
+(helm-mode t)
 (global-set-key (kbd "M-m") #'helm-M-x) ;; helm commands
 (global-set-key (kbd "M-f") #'helm-find-files) ;; helm files
 (global-set-key (kbd "M-p") #'helm-swoop) ;; helm files
