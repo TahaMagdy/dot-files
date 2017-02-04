@@ -12,10 +12,10 @@
 ;; Size
 (set-face-attribute 'default nil :height 160)
 
-;; Disable alarms completely
+; Disable alarms completely
 (setq ring-bell-function 'ignore)
 
-;; Start Emacs in a fullscreen
+; Start Emacs in a fullscreen
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -29,6 +29,7 @@
    (quote
     (find-file-in-project helm-swoop use-package relative-line-numbers org magit linum-relative iedit haskell-mode evil-escape))))
 
+;;;;;;;;;;;;;;;;;
 (load "package")
 (package-initialize)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -41,7 +42,7 @@
 
 
 (evil-mode t)
-;; Mappings
+; Mappings
 (evil-add-hjkl-bindings occur-mode-map 'emacs
   (kbd "/")       'evil-search-forward
   (kbd "n")       'evil-search-next
@@ -49,12 +50,27 @@
   (kbd "C-d")     'evil-scroll-down
   (kbd "C-u")     'evil-scroll-up
   (kbd "C-w C-w") 'other-window)
-(require 'evil)
+;(require 'evil)
+
+;; Escape 
+(evil-escape-mode)
+(setq-default evil-escape-key-sequence "jk" )
+(setq-default evil-escape-delay 0.1)
 
 ;; making the global emacs more like vim
 (global-set-key (kbd "C-d")     'evil-scroll-down)
 (global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of emacs' C-u
 
+;; Helm
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/helm")
+;(require 'helm-config)
+(helm-mode 1)
+(global-set-key (kbd "M-m") #'helm-M-x) ;; helm commands
+(global-set-key (kbd "M-f") #'helm-find-files) ;; helm files
+(global-set-key (kbd "M-p") #'helm-swoop) ;; helm files
+
+;;;;;;;;;;;;;;;;;
 
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -77,23 +93,5 @@ Return the absolute value of OFFSET, converted to string."
     (number-to-string (abs offset))))
 (setq relative-line-numbers-format 'relative-abs-line-numbers-format)
 
-
-;; Escape 
-(evil-escape-mode)
-(setq-default evil-escape-key-sequence "jk" )
-(setq-default evil-escape-delay 0.1)
-
-
-;; Helm
-(add-to-list 'load-path "~/.emacs.d/emacs-async")
-(add-to-list 'load-path "~/.emacs.d/helm")
-(require 'helm-config)
-(helm-mode 1)
-(global-set-key (kbd "M-m") #'helm-M-x) ;; helm commands
-(global-set-key (kbd "M-f") #'helm-find-files) ;; helm files
-(global-set-key (kbd "M-p") #'helm-swoop) ;; helm files
-
 ;; find-file-in-project
 (global-set-key (kbd "M-i") #'find-file-in-current-directory) ;; helm files
-
-
