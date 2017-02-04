@@ -98,9 +98,6 @@ Return the absolute value of OFFSET, converted to string."
 (setq-default evil-escape-key-sequence "jk" )
 (setq-default evil-escape-delay 0.1)
 
-(setq-default major-mode 'evil-mode)
-
-
 
 ;; Helm
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
