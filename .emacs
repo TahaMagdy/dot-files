@@ -65,10 +65,6 @@
 (global-set-key (kbd "C-d")     'evil-scroll-down)
 (global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of C-u
 
-(global-set-key (kbd "C-x k") 'windmove-up)
-(global-set-key (kbd "C-x j") 'windmove-down)
-(global-set-key (kbd "C-x l") 'windmove-left)
-(global-set-key (kbd "C-x h") 'windmove-right)
 
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -109,4 +105,5 @@ Return the absolute value of OFFSET, converted to string."
 
 ;; find-file-in-project
 (global-set-key (kbd "M-i") #'find-file-in-current-directory) ;; helm files
+
 
