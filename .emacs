@@ -27,7 +27,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (use-package relative-line-numbers org magit linum-relative iedit haskell-mode evil-escape))))
+    (find-file-in-project helm-swoop use-package relative-line-numbers org magit linum-relative iedit haskell-mode evil-escape))))
 
 (load "package")
 (package-initialize)
@@ -103,4 +103,10 @@ Return the absolute value of OFFSET, converted to string."
 (add-to-list 'load-path "~/.emacs.d/helm")
 (require 'helm-config)
 (helm-mode 1)
+(global-set-key (kbd "M-m") #'helm-M-x) ;; helm commands
+(global-set-key (kbd "M-f") #'helm-find-files) ;; helm files
+(global-set-key (kbd "M-p") #'helm-swoop) ;; helm files
+
+;; find-file-in-project
+(global-set-key (kbd "M-i") #'find-file-in-current-directory) ;; helm files
 
