@@ -62,7 +62,6 @@
 (require 'evil)
 
 ;; making the global emacs more like vim
-(global-set-key (kbd "/")       'evil-search-forward)
 (global-set-key (kbd "C-d")     'evil-scroll-down)
 (global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of C-u
 
