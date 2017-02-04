@@ -37,17 +37,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
 
-(eval-when-compile
-  (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
-
-
-;;(define-key evil-mode [remap universal-argument] 'evil-scroll-up)
 
 
 (evil-mode t)
@@ -63,7 +53,7 @@
 
 ;; making the global emacs more like vim
 (global-set-key (kbd "C-d")     'evil-scroll-down)
-(global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of C-u
+(global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of emacs' C-u
 
 
 ;; Add themes
@@ -74,7 +64,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-;; Load the theme at startup
+;; The beautiful theme
 (load-theme 'espresso t)
 
 ;; relative numbers && Customization 
