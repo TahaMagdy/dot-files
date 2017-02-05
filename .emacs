@@ -57,7 +57,7 @@
 (add-to-list 'load-path "~/.emacs.d/helm")
 ;(require 'helm-config)
 (helm-mode t)
-(global-set-key (kbd "C-l") #'helm-M-x) ;; helm commands
+(global-set-key (kbd "M-l") #'helm-M-x) ;; helm commands
 (global-set-key (kbd "M-f") #'helm-find-files) ;; helm files
 (global-set-key (kbd "M-p") #'helm-swoop) ;; helm files
 
@@ -149,6 +149,12 @@ Return the absolute value of OFFSET, converted to string."
         (list (concat (getenv "HOME") "/.local/bin") (concat (getenv "HOME") "/.cabal/bin")))))
 
 
+
+
 ;;(eval-after-load 'haskell-mode
 ;;          '(define-key haskell-mode-map [f8] 'haskell-navigate-imports))
 
+;;  Clear the shell
+; C-l to clear :"D
+(put 'erase-buffer 'disabled nil)
+(global-set-key (kbd "C-l")     'erase-buffer)
