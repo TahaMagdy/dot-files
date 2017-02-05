@@ -52,7 +52,7 @@ set formatoptions-=cro " disable auto .. comment
 set expandtab " Convert tab to spaces 
 set tabstop=4 " Remember no space around the `=`
 set shiftwidth=4
-set autoindent " indent newlines
+set noautoindent " indent newlines
 set foldcolumn=0
 set wrap
 set textwidth=81
