@@ -100,14 +100,14 @@ Return the absolute value of OFFSET, converted to string."
 
 ;; Haskell
 ; * hasktags: Generates ctags for haskell programs
-; C-] to jump to the definition of a function 
-; C-o to jump back
+;   C-] to jump to the definition of a function 
+;   C-o to jump back
 (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
     (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
       (add-to-list 'exec-path my-cabal-path))
 (custom-set-variables '(haskell-tags-on-save t))
-; hindent: A Haskell indenter  
-; * M-q
+; * hindent: A Haskell indenter  
+;   M-q to reformat a block
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
 
