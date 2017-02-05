@@ -137,10 +137,15 @@ Return the absolute value of OFFSET, converted to string."
   '(define-key haskell-cabal-mode-map (kbd "C-c C-o") 'haskell-compile))
 
 
-; * Makes emacs recognize the executable files in PATH
-;    Prepend .local/bin and .cabal/bin to PATH environment variable 
+; * Makes emacs recognize the paths in $PATH
 (setenv "PATH" (concat (getenv "HOME") "/.local/bin:" (getenv "PATH")))
 (setenv "PATH" (concat (getenv "HOME") "/.cabal/bin:" (getenv "PATH")))
+(setenv "PATH" (concat (getenv "HOME") "/Library/Frameworks/Python.framework/Versions/2.7/bin:" (getenv "PATH")))
+(setenv "PATH" (concat (getenv "HOME") "/Library/Frameworks/Python.framework/Versions/3.5/bin:" (getenv "PATH")))
+(setenv "PATH" (concat (getenv "HOME") "/ComputerScience/Sage/SageMath:" (getenv "PATH")))
+(setenv "PATH" (concat (getenv "HOME") ":/usr/local/mysql/bin:" (getenv "PATH")))
+(setenv "PATH" (concat (getenv "HOME") ":/opt/local/bin:/opt/local/sbin:" (getenv "PATH")))
+(setenv "PATH" (concat (getenv "HOME") ":/usr/local/bin/:" (getenv "PATH")))
 ;    Prepend them to `exec-path'
 (setq exec-path
       (reverse
