@@ -66,13 +66,6 @@
 
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-;; The beautiful theme
 (load-theme 'espresso t)
 
 ;; relative numbers && Customization 
@@ -102,18 +95,23 @@ Return the absolute value of OFFSET, converted to string."
         (other-window 1)
         (switch-to-buffer (other-buffer))))))
 
+;; Silencing the f!2&^(% third-party warnings  
+(setq ad-redefinition-action 'accept)
 
 ;; Haskell
-; hasktags 
+; hasktags: Generates ctags for haskell programs
 (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
-  (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
-  (add-to-list 'exec-path my-cabal-path))
+    (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
+      (add-to-list 'exec-path my-cabal-path))
+(custom-set-variables '(haskell-tags-on-save t))
+; hindent: A Haskell indenter 
+(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
 
 
 
 
-;(custom-set-variables '(haskell-process-type 'stack-ghci))
+
 
 
 ;;(eval-after-load 'haskell-mode
