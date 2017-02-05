@@ -138,14 +138,7 @@ Return the absolute value of OFFSET, converted to string."
 
 
 ; * Makes emacs recognize the paths in $PATH
-(setenv "PATH" (concat (getenv "HOME") "/.local/bin:" (getenv "PATH")))
-(setenv "PATH" (concat (getenv "HOME") "/.cabal/bin:" (getenv "PATH")))
-(setenv "PATH" (concat (getenv "HOME") "/Library/Frameworks/Python.framework/Versions/2.7/bin:" (getenv "PATH")))
-(setenv "PATH" (concat (getenv "HOME") "/Library/Frameworks/Python.framework/Versions/3.5/bin:" (getenv "PATH")))
-(setenv "PATH" (concat (getenv "HOME") "/ComputerScience/Sage/SageMath:" (getenv "PATH")))
-(setenv "PATH" (concat (getenv "HOME") ":/usr/local/mysql/bin:" (getenv "PATH")))
-(setenv "PATH" (concat (getenv "HOME") ":/opt/local/bin:/opt/local/sbin:" (getenv "PATH")))
-(setenv "PATH" (concat (getenv "HOME") ":/usr/local/bin/:" (getenv "PATH")))
+(setenv "PATH" (concat (getenv "HOME") "/.cabal/bin:/.local/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:~/ComputerScience/Sage/SageMath:/usr/local/mysql/bin:/usr/local/bin/:/Users/taha/.cabal/bin:/opt/local/bin:/opt/local/sbin:" (getenv "PATH")))
 ;    Prepend them to `exec-path'
 (setq exec-path
       (reverse
