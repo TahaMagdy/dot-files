@@ -45,6 +45,7 @@ alias jhbuild='/Users/taha/.local/bin/jhbuild'
 PATH="$PATH":/Users/taha/ComputerScience/Sage/SageMath
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+PATH=$PATH:~/.cabal/bin
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH=$PATH:/Users/taha/ComputerScience/Sage/SageMath:/usr/local/bin/mysql
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
