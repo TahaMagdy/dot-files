@@ -109,12 +109,44 @@ Return the absolute value of OFFSET, converted to string."
 ; * hindent: A Haskell indenter  
 ;   M-q to reformat a block
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+; * interactive mode
+(custom-set-variables
+  '(haskell-process-suggest-remove-import-lines t)
+  '(haskell-process-auto-import-loaded-modules t)
+  '(haskell-process-log t))
+(eval-after-load 'haskell-mode '(progn
+  (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+  (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
+  (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
+  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
+  (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)))
+(eval-after-load 'haskell-cabal '(progn
+  (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+  (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
+; * integrated REPL capabilities instead of ghci
+(custom-set-variables '(haskell-process-type 'cabal-repl))
+; * Stack building tool
+(custom-set-variables '(haskell-process-type 'stack-ghci '(haskell-process-type 'chosen-process-type) ))
+
+(eval-after-load 'haskell-mode
+  '(define-key haskell-mode-map (kbd "C-c C-o") 'haskell-compile))
+(eval-after-load 'haskell-cabal
+  '(define-key haskell-cabal-mode-map (kbd "C-c C-o") 'haskell-compile))
 
 
-
-
-
-
+; * Makes emacs recognize the executable files in PATH
+;    Prepend .local/bin and .cabal/bin to PATH environment variable 
+(setenv "PATH" (concat (getenv "HOME") "/.local/bin:" (getenv "PATH")))
+(setenv "PATH" (concat (getenv "HOME") "/.cabal/bin:" (getenv "PATH")))
+;    Prepend them to `exec-path'
+(setq exec-path
+      (reverse
+       (append
+        (reverse exec-path)
+        (list (concat (getenv "HOME") "/.local/bin") (concat (getenv "HOME") "/.cabal/bin")))))
 
 
 ;;(eval-after-load 'haskell-mode
