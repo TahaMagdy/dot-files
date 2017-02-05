@@ -158,3 +158,7 @@ Return the absolute value of OFFSET, converted to string."
 ; C-l to clear :"D
 (put 'erase-buffer 'disabled nil)
 (global-set-key (kbd "C-l")     'erase-buffer)
+
+;; toggle split window
+(global-set-key (kbd "M-[")     'window-split-toggle)
+ 
