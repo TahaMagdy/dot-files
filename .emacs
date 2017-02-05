@@ -17,23 +17,7 @@
 
 ; Start Emacs in a fullscreen
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-ghc-show-info t)
- '(custom-safe-themes
-   (quote
-    ("4c7a1f0559674bf6d5dd06ec52c8badc5ba6e091f954ea364a020ed702665aa1" "f7eb64b27901812bbdbb91654c2a2e98555fa8d5b256144199925d6c7c0bd3bd" "c924950f6b5b92a064c5ad7063bb34fd3facead47cd0d761a31e7e76252996f7" default)))
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t)
- '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-type (quote cabal-repl))
- '(haskell-tags-on-save t)
- '(initial-frame-alist (quote ((fullscreen . maximized))))
- '(package-selected-packages
-   (quote
-    (cl-lib cl-lib-highlight ghci-completion better-shell find-file-in-project helm-swoop use-package relative-line-numbers org magit linum-relative iedit haskell-mode evil-escape))))
+   '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
 ;;;;;;;;;;;;;;;;;
 (load "package")
@@ -41,6 +25,7 @@
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
@@ -77,8 +62,6 @@
 (global-set-key (kbd "M-p") #'helm-swoop) ;; helm files
 
 
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;;;;;;;;;;;;;;;;;
 
 ;; Add themes
@@ -119,30 +102,8 @@ Return the absolute value of OFFSET, converted to string."
         (other-window 1)
         (switch-to-buffer (other-buffer))))))
 
-;; company-mode in all buffers
-(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Haskell
-(require 'company)
-(add-hook 'haskell-mode-hook 'company-mode)
- ;; show type
-
-
-(require 'haskell-interactive-mode)
-(require 'haskell-process)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-
-
-
-
-(define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
-(define-key haskell-mode-map (kbd "C-`") 'haskell-interactive-bring)
-(define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
-(define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
-(define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
-(define-key haskell-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
-(define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
-
 ; hasktags 
 (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
   (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
