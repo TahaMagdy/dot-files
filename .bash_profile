@@ -34,6 +34,7 @@ alias lsd='ls -lSd */'
             # -U Time of file creation#}}}
 alias vim='/usr/local/bin/vim'
 alias vd='cd ~/.vim'
+alias ghci='/usr/local/bin/ghci'
 alias vb='cd ~/.vim/bundle'
 alias vr='vim ~/.vimrc'
 alias bp='vim ~/.bash_profile'
