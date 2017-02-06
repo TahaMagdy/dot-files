@@ -87,8 +87,8 @@
 (global-set-key (kbd "s-s") #'helm-swoop)                       ; s -> swoop
 (define-key helm-map (kbd "s-p") 'helm-previous-line)
 (define-key helm-map (kbd "s-n") 'helm-next-line)
-(define-key helm-map (kbd "s-p") 'helm-execute-persistent-action) ; to right
-(define-key helm-map (kbd "s-o") 'helm-find-files-up-one-level)   ; to lift
+(define-key helm-map (kbd "s-o") 'helm-execute-persistent-action) ; to right
+(define-key helm-map (kbd "s-i") 'helm-find-files-up-one-level)   ; to lift
 
 
 
