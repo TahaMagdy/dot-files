@@ -87,7 +87,9 @@
 (global-set-key (kbd "s-s") #'helm-swoop)                       ; s -> swoop
 (define-key helm-map (kbd "s-p") 'helm-previous-line)
 (define-key helm-map (kbd "s-n") 'helm-next-line)
-(define-key helm-map (kbd "<escape>") 'helm-like-unite/body)
+(define-key helm-map (kbd "s-p") 'helm-execute-persistent-action) ; to right
+(define-key helm-map (kbd "s-o") 'helm-find-files-up-one-level)   ; to lift
+
 
 
 ;; find-file-in-a-directory-recursively [expensive in case of huge number of files]
