@@ -76,6 +76,7 @@
 (global-set-key (kbd "s-w")     'switch-to-buffer-other-window) ; w -> window
 (global-set-key (kbd "s-k")     'kill-buffer)                   ; k -> kill
 (global-set-key (kbd "s-p")     'company-select-previous)
+(global-set-key (kbd "s-n")     'company-select-next)
 (global-set-key (kbd "s-0")     'scroll-other-window-down)
 (global-set-key (kbd "s-9")     'scroll-other-window)
 (global-set-key (kbd "s-m") #'helm-M-x)                         ; m -> modes
