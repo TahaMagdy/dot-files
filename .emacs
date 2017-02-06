@@ -22,20 +22,20 @@
 
 ; Start emacs in a fullscreen
 (custom-set-variables
- ;; custom-set-variables was added by custom.
- ;; if you edit it by hand, you could mess it up, so be careful.
- ;; your init file should contain only one such instance.
- ;; if there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(company-ghc-show-info t)
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
  '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-type (quote stack-ghci))
+ '(haskell-process-type (quote ghci))
  '(haskell-tags-on-save t)
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (haskell-emacs bash-completion company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
+    (jedi 0blayout elpy haskell-emacs bash-completion company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
 
 ;;;;;;;;;;;;;;;;;
 (load "package")
@@ -197,8 +197,7 @@ return the absolute value of offset, converted to string."
   (define-key haskell-cabal-mode-map (kbd "C-c c")   'haskell-process-cabal)))
 
 ; *  It is so important
-(custom-set-variables
-  '(haskell-process-type 'ghci))
+
                         ;; options
                         ;;ghci       [ok]
                         ;;cabal-repl [ok]
@@ -221,4 +220,16 @@ return the absolute value of offset, converted to string."
 
 
 ;; Python
-;(setq python-shell-interpreter "/library/frameworks/python.framework/versions/2.7/bin/python")
+; * pyhton mode
+(elpy-enable)
+; * remove f@*^! warnings
+(setq python-shell-completion-native-enable nil)
+(define-key elpy-mode-map (kbd "C-c C-l")   'elpy-shell-send-region-or-buffer)
+ 
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
