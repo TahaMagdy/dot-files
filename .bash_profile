@@ -20,24 +20,16 @@ bind -m vi-insert "\C-l":clear-screen # DO NOT PUT A SPACE AFTER THE ':'
 
 # Aliases 
 # To refresh: source ~/.bash_profile
-alias mysql=/usr/local/mysql/bin/mysql
-alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 alias wb='cd /Library/WebServer/Documents/'
 alias cl='clear'
 alias lss='ls -lS'     
 alias lsd='ls -lSd */'
 alias vim='/usr/local/bin/vim'
-alias vd='cd ~/.vim'
-alias ghci='/usr/local/bin/ghci'
-alias vb='cd ~/.vim/bundle'
 alias vr='vim ~/.vimrc'
 alias bp='vim ~/.bash_profile'
 alias note='cd ~/ComputerScience/notes' 
-alias cabal='/usr/local/bin/cabal'
-alias gpg='/usr/local/Cellar/gnupg/1.4.21/bin/gpg1'
 alias grep='grep -n  -P --color=always'
-alias jhbuild='/Users/taha/.local/bin/jhbuild'
-PATH="$PATH":/Users/taha/ComputerScience/Sage/SageMath:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/Users/taha/ComputerScience/Sage/SageMath:/usr/local/bin/mysql:/opt/local/bin:/opt/local/sbin:/Users/taha/.cabal/bin:$PATH
+PATH=/Users/taha/ComputerScience/Sage/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export PATH
 
 # tab completion
