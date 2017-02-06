@@ -51,6 +51,13 @@
 
 
 (evil-mode t)
+
+; Helm
+(add-to-list 'load-path "~/.emacs.d/emacs-async")
+(add-to-list 'load-path "~/.emacs.d/helm")
+;(require 'helm-config)
+(helm-mode t)
+
 ; Mappings
 (evil-add-hjkl-bindings occur-mode-map 'emacs
   (kbd "/")       'evil-search-forward
@@ -59,25 +66,21 @@
   (kbd "C-d")     'evil-scroll-down
   (kbd "C-u")     'evil-scroll-up
   (kbd "C-w C-w") 'other-window)
-;(require 'evil)
+(global-set-key (kbd "C-d")     'evil-scroll-down)
+(global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of emacs' C-u
+(global-set-key (kbd "s-0")     'next-buffer)
+(global-set-key (kbd "s-9")     'previous-buffer)
+(global-set-key (kbd "s-x")     'execute-extended-command)
+(global-set-key (kbd "s-[")     'window-split-toggle)
+(global-set-key (kbd "s-m") #'helm-M-x)          ;; helm commands
+(global-set-key (kbd "s-f") #'helm-find-files)   ;; helm files
+
 
 ;; Escape 
 (evil-escape-mode)
 (setq-default evil-escape-key-sequence "jk" )
 (setq-default evil-escape-delay 0.1)
 
-;; making the global emacs more like vim
-(global-set-key (kbd "C-d")     'evil-scroll-down)
-(global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of emacs' C-u
-
-; Helm
-(add-to-list 'load-path "~/.emacs.d/emacs-async")
-(add-to-list 'load-path "~/.emacs.d/helm")
-;(require 'helm-config)
-(helm-mode t)
-(global-set-key (kbd "M-m") #'helm-M-x) ;; helm commands
-(global-set-key (kbd "M-f") #'helm-find-files) ;; helm files
-(global-set-key (kbd "M-p") #'helm-swoop) ;; helm files
 
 
 ;; auto-complete bash
@@ -92,6 +95,7 @@
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'espresso t)
+(set-face-attribute 'region nil :background "#D4D4D4") ;; selection color
 
 ;; relative numbers && Customization 
 (global-relative-line-numbers-mode)
@@ -201,8 +205,6 @@ Return the absolute value of OFFSET, converted to string."
 (put 'erase-buffer 'disabled nil)
 (global-set-key (kbd "C-l")     'erase-buffer)
 
-;; toggle split window
-(global-set-key (kbd "M-[")     'window-split-toggle)
  
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
