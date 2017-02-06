@@ -8,7 +8,6 @@
   # PS1='taha@localhost \W \$ ' # prompt 
 
 
-CLICOLOR=1
 export CLICOLOR=1
 
 # The awesomeness 
