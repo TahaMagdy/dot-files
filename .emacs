@@ -67,15 +67,18 @@
   (kbd "C-u")     'evil-scroll-up
   (kbd "C-w C-w") 'other-window)
 (global-set-key (kbd "C-d")     'evil-scroll-down)
-(global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of emacs' C-u
+(global-set-key (kbd "C-u")     'evil-scroll-up)
 (global-set-key (kbd "s-=")     'next-buffer)
 (global-set-key (kbd "s--")     'previous-buffer)
 (global-set-key (kbd "s-x")     'execute-extended-command)
 (global-set-key (kbd "s-[")     'window-split-toggle)
-(global-set-key (kbd "s-m") #'helm-M-x)          ;; helm commands
-(global-set-key (kbd "s-f") #'helm-find-files)   ;; helm files
+(global-set-key (kbd "s-b")     'switch-to-buffer)              ; b -> buffer list
+(global-set-key (kbd "s-w")     'switch-to-buffer-other-window) ; w -> window
+(global-set-key (kbd "s-k")     'kill-buffer)                   ; k -> kill
+(global-set-key (kbd "s-m") #'helm-M-x)                         ; m -> modes
+(global-set-key (kbd "s-f") #'helm-find-files)                  ; f -> files
 ;; find-file-in-a-directory-recursively [Expensive in case of huge number of files]
-(global-set-key (kbd "M-i") #'find-file-in-current-directory) ;; helm files
+(global-set-key (kbd "M-i") #'find-file-in-current-directory)   ; i -> in-current
 
 
 ;; Escape 
