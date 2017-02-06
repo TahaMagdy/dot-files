@@ -12,12 +12,30 @@
 ;; Size
 (set-face-attribute 'default nil :height 160)
 
-; Disable alarms completely
+;; Disable alarms completely
 (setq ring-bell-function 'ignore)
+
+;; Disable backup
+(setq backup-inhibited t)
+;; Disable auto save
+(setq auto-save-default nil)
 
 ; Start Emacs in a fullscreen
 (custom-set-variables
-   '(initial-frame-alist (quote ((fullscreen . maximized)))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-ghc-show-info t)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote stack-ghci))
+ '(haskell-tags-on-save t)
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(package-selected-packages
+   (quote
+    (haskell-emacs bash-completion company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
 
 ;;;;;;;;;;;;;;;;;
 (load "package")
@@ -52,15 +70,22 @@
 (global-set-key (kbd "C-d")     'evil-scroll-down)
 (global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of emacs' C-u
 
-;; Helm
+; Helm
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/helm")
 ;(require 'helm-config)
 (helm-mode t)
-(global-set-key (kbd "M-l") #'helm-M-x) ;; helm commands
+(global-set-key (kbd "M-m") #'helm-M-x) ;; helm commands
 (global-set-key (kbd "M-f") #'helm-find-files) ;; helm files
 (global-set-key (kbd "M-p") #'helm-swoop) ;; helm files
 
+
+;; auto-complete bash
+;;(autoload 'bash-completion-dynamic-complete 
+;  "bash-completion"
+;  "BASH completion hook")
+;(add-hook 'shell-dynamic-complete-functions
+;  'bash-completion-dynamic-complete)
 
 ;;;;;;;;;;;;;;;;;
 
@@ -98,6 +123,15 @@ Return the absolute value of OFFSET, converted to string."
 ;; Silencing the f!2&^(% third-party warnings  
 (setq ad-redefinition-action 'accept)
 
+;; Enable company
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(add-hook 'haskell-mode-hook 'company-mode)
+; instruct company-mode to get completions from ghc-mod
+(add-to-list 'company-backends 'company-ghc)
+
+
+
 ;; Haskell
 ; * hasktags: Generates ctags for haskell programs
 ;   C-] to jump to the definition of a function 
@@ -105,15 +139,12 @@ Return the absolute value of OFFSET, converted to string."
 (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
     (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
       (add-to-list 'exec-path my-cabal-path))
-(custom-set-variables '(haskell-tags-on-save t))
+
 ; * hindent: A Haskell indenter  
 ;   M-q to reformat a block
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 ; * interactive mode
-(custom-set-variables
-  '(haskell-process-suggest-remove-import-lines t)
-  '(haskell-process-auto-import-loaded-modules t)
-  '(haskell-process-log t))
+
 (eval-after-load 'haskell-mode '(progn
   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
   (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
@@ -126,11 +157,25 @@ Return the absolute value of OFFSET, converted to string."
   (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
   (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
   (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
-; * integrated REPL capabilities instead of ghci
-(custom-set-variables '(haskell-process-type 'cabal-repl))
-; * Stack building tool
-(custom-set-variables '(haskell-process-type 'stack-ghci '(haskell-process-type 'chosen-process-type) ))
 
+; *  IT IS SO IMPORTANT
+(custom-set-variables
+  '(haskell-process-type 'ghci))
+                        ;; options
+                        ;;ghci       [OK]
+                        ;;cabal-repl [OK]
+                        ;;cabal-dev
+                        ;;cabal-ghci
+                        ;;stack-ghci
+
+; * Indentation
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+
+; * ghci-completion
+(add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion)
+
+;; Compile 
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-o") 'haskell-compile))
 (eval-after-load 'haskell-cabal
@@ -146,8 +191,7 @@ Return the absolute value of OFFSET, converted to string."
         (reverse exec-path)
         (list (concat (getenv "HOME") "/.local/bin") (concat (getenv "HOME") "/.cabal/bin")))))
 
-
-
+(exec-path-from-shell-initialize)
 
 ;;(eval-after-load 'haskell-mode
 ;;          '(define-key haskell-mode-map [f8] 'haskell-navigate-imports))
@@ -160,3 +204,9 @@ Return the absolute value of OFFSET, converted to string."
 ;; toggle split window
 (global-set-key (kbd "M-[")     'window-split-toggle)
  
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
