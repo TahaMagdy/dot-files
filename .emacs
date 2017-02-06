@@ -82,9 +82,11 @@
 (global-set-key (kbd "s-m") #'helm-M-x)                         ; m -> modes
 (global-set-key (kbd "s-f") #'helm-find-files)                  ; f -> files
 (global-set-key (kbd "s-s") #'helm-swoop)                       ; s -> swoop
-
+(define-key helm-map (kbd "s-p") 'helm-previous-line)
+(define-key helm-map (kbd "s-n") 'helm-next-line)
 ;; find-file-in-a-directory-recursively [expensive in case of huge number of files]
 (global-set-key (kbd "M-i") #'find-file-in-current-directory)   ; i -> in-current
+
 
 
 ;; escape 
