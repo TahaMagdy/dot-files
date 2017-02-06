@@ -81,11 +81,11 @@
 
 
 ;; auto-complete bash
-;;(autoload 'bash-completion-dynamic-complete 
-;  "bash-completion"
-;  "BASH completion hook")
-;(add-hook 'shell-dynamic-complete-functions
-;  'bash-completion-dynamic-complete)
+(autoload 'bash-completion-dynamic-complete 
+  "bash-completion"
+  "BASH completion hook")
+(add-hook 'shell-dynamic-complete-functions
+  'bash-completion-dynamic-complete)
 
 ;;;;;;;;;;;;;;;;;
 
