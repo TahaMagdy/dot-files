@@ -58,7 +58,7 @@
 ;(require 'helm-config)
 (helm-mode t)
 
-; Mappings
+;; Mappings
 (evil-add-hjkl-bindings occur-mode-map 'emacs
   (kbd "/")       'evil-search-forward
   (kbd "n")       'evil-search-next
@@ -66,6 +66,7 @@
   (kbd "C-d")     'evil-scroll-down
   (kbd "C-u")     'evil-scroll-up
   (kbd "C-w C-w") 'other-window)
+; * Scrolling & Buffers
 (global-set-key (kbd "C-d")     'evil-scroll-down)
 (global-set-key (kbd "C-u")     'evil-scroll-up)
 (global-set-key (kbd "s-=")     'next-buffer)
@@ -79,11 +80,16 @@
 (global-set-key (kbd "s-n")     'company-select-next)
 (global-set-key (kbd "s-0")     'scroll-other-window-down)
 (global-set-key (kbd "s-9")     'scroll-other-window)
+
+; * Helm mappings
 (global-set-key (kbd "s-m") #'helm-M-x)                         ; m -> modes
 (global-set-key (kbd "s-f") #'helm-find-files)                  ; f -> files
 (global-set-key (kbd "s-s") #'helm-swoop)                       ; s -> swoop
 (define-key helm-map (kbd "s-p") 'helm-previous-line)
 (define-key helm-map (kbd "s-n") 'helm-next-line)
+(define-key helm-map (kbd "<escape>") 'helm-like-unite/body)
+
+
 ;; find-file-in-a-directory-recursively [expensive in case of huge number of files]
 (global-set-key (kbd "M-i") #'find-file-in-current-directory)   ; i -> in-current
 
