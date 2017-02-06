@@ -1,6 +1,6 @@
 ;; Removing the tool bar
 (tool-bar-mode -1)
-;; Removing scroll bar
+;; removing scroll bar
 (scroll-bar-mode -1)
 
 
@@ -20,12 +20,12 @@
 ;; Disable auto save
 (setq auto-save-default nil)
 
-; Start Emacs in a fullscreen
+; Start emacs in a fullscreen
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by custom.
+ ;; if you edit it by hand, you could mess it up, so be careful.
+ ;; your init file should contain only one such instance.
+ ;; if there is more than one, they won't work right.
  '(company-ghc-show-info t)
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
@@ -52,7 +52,7 @@
 
 (evil-mode t)
 
-; Helm
+; helm
 (add-to-list 'load-path "~/.emacs.d/emacs-async")
 (add-to-list 'load-path "~/.emacs.d/helm")
 ;(require 'helm-config)
@@ -77,11 +77,15 @@
 (global-set-key (kbd "s-k")     'kill-buffer)                   ; k -> kill
 (global-set-key (kbd "s-m") #'helm-M-x)                         ; m -> modes
 (global-set-key (kbd "s-f") #'helm-find-files)                  ; f -> files
-;; find-file-in-a-directory-recursively [Expensive in case of huge number of files]
+(global-set-key (kbd "s-s") #'helm-swoop)                       ; s -> swoop
+(global-set-key (kbd "s-n") #'evil-paste-pop-next)              ; n -> next
+(global-set-key (kbd "s-p") #'evil-paste-pop)                   ; p -> previ
+
+;; find-file-in-a-directory-recursively [expensive in case of huge number of files]
 (global-set-key (kbd "M-i") #'find-file-in-current-directory)   ; i -> in-current
 
 
-;; Escape 
+;; escape 
 (evil-escape-mode)
 (setq-default evil-escape-key-sequence "jk" )
 (setq-default evil-escape-delay 0.1)
@@ -91,7 +95,7 @@
 ;; auto-complete bash
 (autoload 'bash-completion-dynamic-complete 
   "bash-completion"
-  "BASH completion hook")
+  "bash completion hook")
 (add-hook 'shell-dynamic-complete-functions
   'bash-completion-dynamic-complete)
 
@@ -100,13 +104,13 @@
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'espresso t)
-(set-face-attribute 'region nil :background "#D4D4D4") ;; selection color
+(set-face-attribute 'region nil :background "#d4d4d4") ;; selection color
 
-;; relative numbers && Customization 
+;; Relative numbers
 (global-relative-line-numbers-mode)
 (defun relative-abs-line-numbers-format (offset)
-  "The default formatting function.
-Return the absolute value of OFFSET, converted to string."
+  "the default formatting function.
+return the absolute value of offset, converted to string."
   (if (= 0 offset)
       (number-to-string (line-number-at-pos))
     (number-to-string (abs offset))))
@@ -114,10 +118,10 @@ Return the absolute value of OFFSET, converted to string."
 
 
 (defun window-split-toggle ()
-  "Toggle between horizontal and vertical split with two windows."
+  "toggle between horizontal and vertical split with two windows."
   (interactive)
   (if (> (length (window-list)) 2)
-      (error "Can't toggle with more than 2 windows!")
+      (error "can't toggle with more than 2 windows!")
     (let ((func (if (window-full-height-p)
                     #'split-window-vertically
                   #'split-window-horizontally)))
@@ -137,36 +141,36 @@ Return the absolute value of OFFSET, converted to string."
 ; instruct company-mode to get completions from ghc-mod
 (add-to-list 'company-backends 'company-ghc)
 
-;;  Clear the shell
-; C-l to clear :"D
+;; Clear the shell
+; c-l to clear :"d
 (put 'erase-buffer 'disabled nil)
 (global-set-key (kbd "C-l")     'erase-buffer)
 
-;; Makes emacs recognizes the paths in $PATH
-(setenv "PATH" (concat (getenv "HOME") "/.cabal/bin:/.local/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:~/ComputerScience/Sage/SageMath:/usr/local/mysql/bin:/usr/local/bin/:/Users/taha/.cabal/bin:/opt/local/bin:/opt/local/sbin:" (getenv "PATH")))
-;    Prepend them to `exec-path'
+;; makes emacs recognizes the paths in $path
+(setenv "path" (concat (getenv "home") "/.cabal/bin:/.local/bin:/library/frameworks/python.framework/versions/2.7/bin:/library/frameworks/python.framework/versions/3.5/bin:~/computerscience/sage/sagemath:/usr/local/mysql/bin:/usr/local/bin/:/users/taha/.cabal/bin:/opt/local/bin:/opt/local/sbin:" (getenv "path")))
+;    prepend them to `exec-path'
 (setq exec-path
       (reverse
        (append
         (reverse exec-path)
-        (list (concat (getenv "HOME") "/.local/bin") (concat (getenv "HOME") "/.cabal/bin")))))
+        (list (concat (getenv "home") "/.local/bin") (concat (getenv "home") "/.cabal/bin")))))
 (exec-path-from-shell-initialize)
 
 ;;;;;;;
 
 ;; Haskell
-; * hasktags: Generates ctags for haskell programs
-;   C-] to jump to the definition of a function 
-;   C-o to jump back
+; * Hasktags: Generates ctags for haskell programs
+;   c-] to jump to the definition of a function 
+;   c-o to jump back
 (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
-    (setenv "PATH" (concat my-cabal-path path-separator (getenv "PATH")))
+    (setenv "path" (concat my-cabal-path path-separator (getenv "path")))
       (add-to-list 'exec-path my-cabal-path))
 
 ; * hindent: A Haskell indenter  
-;   M-q to reformat a block
+;   m-q to reformat a block
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
-; * interactive mode
+; * Interactive mode
 (eval-after-load 'haskell-mode '(progn
   (define-key haskell-mode-map (kbd "C-c C-l")     'haskell-process-load-or-reload)
   (define-key haskell-mode-map (kbd "C-c C-z")     'haskell-interactive-switch)
@@ -180,12 +184,12 @@ Return the absolute value of OFFSET, converted to string."
   (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
   (define-key haskell-cabal-mode-map (kbd "C-c c")   'haskell-process-cabal)))
 
-; *  IT IS SO IMPORTANT
+; *  It is so important
 (custom-set-variables
   '(haskell-process-type 'ghci))
                         ;; options
-                        ;;ghci       [OK]
-                        ;;cabal-repl [OK]
+                        ;;ghci       [ok]
+                        ;;cabal-repl [ok]
                         ;;cabal-dev
                         ;;cabal-ghci
                         ;;stack-ghci
@@ -194,7 +198,7 @@ Return the absolute value of OFFSET, converted to string."
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 
-; * ghci-completion
+; * Ghci-completion
 (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion)
 
 ; * Compile 
@@ -205,4 +209,4 @@ Return the absolute value of OFFSET, converted to string."
 
 
 ;; Python
-;(setq python-shell-interpreter "/Library/Frameworks/Python.framework/Versions/2.7/bin/python")
+;(setq python-shell-interpreter "/library/frameworks/python.framework/versions/2.7/bin/python")
