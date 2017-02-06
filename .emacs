@@ -68,12 +68,14 @@
   (kbd "C-w C-w") 'other-window)
 (global-set-key (kbd "C-d")     'evil-scroll-down)
 (global-set-key (kbd "C-u")     'evil-scroll-up) ;; Solve the conflict of emacs' C-u
-(global-set-key (kbd "s-0")     'next-buffer)
-(global-set-key (kbd "s-9")     'previous-buffer)
+(global-set-key (kbd "s-=")     'next-buffer)
+(global-set-key (kbd "s--")     'previous-buffer)
 (global-set-key (kbd "s-x")     'execute-extended-command)
 (global-set-key (kbd "s-[")     'window-split-toggle)
 (global-set-key (kbd "s-m") #'helm-M-x)          ;; helm commands
 (global-set-key (kbd "s-f") #'helm-find-files)   ;; helm files
+;; find-file-in-a-directory-recursively [Expensive in case of huge number of files]
+(global-set-key (kbd "M-i") #'find-file-in-current-directory) ;; helm files
 
 
 ;; Escape 
@@ -107,8 +109,6 @@ Return the absolute value of OFFSET, converted to string."
     (number-to-string (abs offset))))
 (setq relative-line-numbers-format 'relative-abs-line-numbers-format)
 
-;; find-file-in-project
-(global-set-key (kbd "M-i") #'find-file-in-current-directory) ;; helm files
 
 (defun window-split-toggle ()
   "Toggle between horizontal and vertical split with two windows."
