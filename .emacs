@@ -137,7 +137,22 @@ Return the absolute value of OFFSET, converted to string."
 ; instruct company-mode to get completions from ghc-mod
 (add-to-list 'company-backends 'company-ghc)
 
+;;  Clear the shell
+; C-l to clear :"D
+(put 'erase-buffer 'disabled nil)
+(global-set-key (kbd "C-l")     'erase-buffer)
 
+;; Makes emacs recognizes the paths in $PATH
+(setenv "PATH" (concat (getenv "HOME") "/.cabal/bin:/.local/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:~/ComputerScience/Sage/SageMath:/usr/local/mysql/bin:/usr/local/bin/:/Users/taha/.cabal/bin:/opt/local/bin:/opt/local/sbin:" (getenv "PATH")))
+;    Prepend them to `exec-path'
+(setq exec-path
+      (reverse
+       (append
+        (reverse exec-path)
+        (list (concat (getenv "HOME") "/.local/bin") (concat (getenv "HOME") "/.cabal/bin")))))
+(exec-path-from-shell-initialize)
+
+;;;;;;;
 
 ;; Haskell
 ; * hasktags: Generates ctags for haskell programs
@@ -150,8 +165,8 @@ Return the absolute value of OFFSET, converted to string."
 ; * hindent: A Haskell indenter  
 ;   M-q to reformat a block
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-; * interactive mode
 
+; * interactive mode
 (eval-after-load 'haskell-mode '(progn
   (define-key haskell-mode-map (kbd "C-c C-l")     'haskell-process-load-or-reload)
   (define-key haskell-mode-map (kbd "C-c C-z")     'haskell-interactive-switch)
@@ -182,36 +197,12 @@ Return the absolute value of OFFSET, converted to string."
 ; * ghci-completion
 (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion)
 
-;; Compile 
+; * Compile 
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-o") 'haskell-compile))
 (eval-after-load 'haskell-cabal
   '(define-key haskell-cabal-mode-map (kbd "C-c C-o") 'haskell-compile))
 
 
-; * Makes emacs recognize the paths in $PATH
-(setenv "PATH" (concat (getenv "HOME") "/.cabal/bin:/.local/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:~/ComputerScience/Sage/SageMath:/usr/local/mysql/bin:/usr/local/bin/:/Users/taha/.cabal/bin:/opt/local/bin:/opt/local/sbin:" (getenv "PATH")))
-;    Prepend them to `exec-path'
-(setq exec-path
-      (reverse
-       (append
-        (reverse exec-path)
-        (list (concat (getenv "HOME") "/.local/bin") (concat (getenv "HOME") "/.cabal/bin")))))
-
-(exec-path-from-shell-initialize)
-
-;;(eval-after-load 'haskell-mode
-;;          '(define-key haskell-mode-map [f8] 'haskell-navigate-imports))
-
-;;  Clear the shell
-; C-l to clear :"D
-(put 'erase-buffer 'disabled nil)
-(global-set-key (kbd "C-l")     'erase-buffer)
-
- 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Python
+;(setq python-shell-interpreter "/Library/Frameworks/Python.framework/Versions/2.7/bin/python")
