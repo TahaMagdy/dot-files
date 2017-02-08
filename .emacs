@@ -23,7 +23,9 @@
 
 ;; parenthesis matching  
 (show-paren-mode)
-(setq show-paren-delay 0.09)
+(setq show-paren-delay 0.4)
+(custom-set-faces
+ '(show-paren-match ((((class color) (background light)) (:background "selectedTextBackgroundColor")))))
 
 ; Start emacs in a fullscreen
 (custom-set-variables
