@@ -20,6 +20,11 @@
 ;; Disable auto save
 (setq auto-save-default nil)
 
+
+;; parenthesis matching  
+(show-paren-mode)
+(setq show-paren-delay 0.09)
+
 ; Start emacs in a fullscreen
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
