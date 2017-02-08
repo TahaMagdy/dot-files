@@ -28,7 +28,11 @@ alias vr='vim ~/.vimrc'
 alias bp='vim ~/.bash_profile'
 alias note='cd ~/ComputerScience/notes' 
 alias grep='grep -n  -P --color=always'
-PATH=/Users/taha/ComputerScience/Sage/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:$PATH
+alias apacheStart='sudo /usr/local/apache2/bin/apachectl start'
+alias apacheStop='sudo /usr/local/apache2/bin/apachectl stop'
+alias apacheRestart='sudo /usr/local/apache2/bin/apachectl restart'
+
+PATH=/Users/taha/ComputerScience/Sage/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/local/apache2/:$PATH
 export PATH
 
 # tab completion
