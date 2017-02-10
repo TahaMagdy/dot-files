@@ -6,6 +6,10 @@
 ;; Column number
 (setq column-number-mode t)
 
+;; NO F*!@$% tab
+(setq-default indent-tabs-mode nil)
+
+
 ;; Hide startup screen
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
