@@ -1,8 +1,10 @@
 ;; Removing the tool bar
 (tool-bar-mode -1)
-;; removing scroll bar
+;; Removing scroll bar
 (scroll-bar-mode -1)
 
+;; Column number
+(setq column-number-mode t)
 
 ;; Hide startup screen
 (setq inhibit-splash-screen t)
@@ -25,6 +27,10 @@
 (show-paren-mode)
 (setq show-paren-delay 0.4)
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(show-paren-match ((((class color) (background light)) (:background "selectedTextBackgroundColor")))))
 
 ; Start emacs in a fullscreen
@@ -42,7 +48,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (jedi 0blayout elpy haskell-emacs bash-completion company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
+    (emacsql-mysql jedi 0blayout elpy haskell-emacs bash-completion company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
 
 ;;;;;;;;;;;;;;;;;
 (load "package")
@@ -234,9 +240,4 @@ return the absolute value of offset, converted to string."
 (define-key elpy-mode-map (kbd "C-c C-l")   'elpy-shell-send-region-or-buffer)
  
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
