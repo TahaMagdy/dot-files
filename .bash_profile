@@ -16,10 +16,11 @@ set bell-style none
 set keymap vi-command
 bind -m vi-insert "\C-l":clear-screen # DO NOT PUT A SPACE AFTER THE ':'
 
+apacheStart='sudo /usr/local/apache/apachectl start'
 
 # Aliases 
 # To refresh: source ~/.bash_profile
-alias wb='cd /Library/WebServer/Documents/'
+alias wb='cd /usr/local/apache2/'
 alias cl='clear'
 alias lss='ls -lS'     
 alias lsd='ls -lSd */'
@@ -32,7 +33,7 @@ alias apacheStart='sudo /usr/local/apache2/bin/apachectl start'
 alias apacheStop='sudo /usr/local/apache2/bin/apachectl stop'
 alias apacheRestart='sudo /usr/local/apache2/bin/apachectl restart'
 
-PATH=/Users/taha/ComputerScience/Sage/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:/usr/local/apache2/:$PATH
+PATH=/usr/local/apache2/:/Users/taha/ComputerScience/Sage/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export PATH
 
 # tab completion
