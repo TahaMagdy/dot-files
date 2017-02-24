@@ -1,3 +1,6 @@
+;; Emacs.app open files in an existing frame instead of a new frame
+(setq ns-pop-up-frames nil)
+
 ;; Removing the tool bar
 (tool-bar-mode -1)
 ;; Removing scroll bar
@@ -21,13 +24,23 @@
 ;; Disable alarms completely
 (setq ring-bell-function 'ignore)
 
+;;; Highlight text beyond 80th column
+;(require 'whitespace)
+;(setq whitespace-style '(face lines-tail))
+;(setq whitespace-line-column 80)
+;(global-whitespace-mode t)
+
+;; Automatically removes trailing whitespaces when file is saved
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
 ;; Disable backup
 (setq backup-inhibited t)
 ;; Disable auto save
 (setq auto-save-default nil)
 
 
-;; parenthesis matching  
+;; parenthesis matching
 (show-paren-mode)
 (setq show-paren-delay 0.4)
 (custom-set-faces
@@ -52,7 +65,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (emacsql-mysql jedi 0blayout elpy haskell-emacs bash-completion company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
+    (markdown-mode emacsql-mysql jedi 0blayout elpy haskell-emacs company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
 
 ;;;;;;;;;;;;;;;;;
 (load "package")
@@ -114,19 +127,12 @@
 
 
 
-;; escape 
+;; escape
 (evil-escape-mode)
 (setq-default evil-escape-key-sequence "jk" )
 (setq-default evil-escape-delay 0.1)
 
 
-
-;; auto-complete bash
-(autoload 'bash-completion-dynamic-complete 
-  "bash-completion"
-  "bash completion hook")
-(add-hook 'shell-dynamic-complete-functions
-  'bash-completion-dynamic-complete)
 
 ;;;;;;;;;;;;;;;;;
 
@@ -160,7 +166,7 @@ return the absolute value of offset, converted to string."
         (other-window 1)
         (switch-to-buffer (other-buffer))))))
 
-;; Silencing the f!2&^(% third-party warnings  
+;; Silencing the f!2&^(% third-party warnings
 (setq ad-redefinition-action 'accept)
 
 ;; Enable company
@@ -189,13 +195,13 @@ return the absolute value of offset, converted to string."
 
 ;; Haskell
 ; * Hasktags: Generates ctags for haskell programs
-;   c-] to jump to the definition of a function 
+;   c-] to jump to the definition of a function
 ;   c-o to jump back
 (let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
     (setenv "path" (concat my-cabal-path path-separator (getenv "path")))
       (add-to-list 'exec-path my-cabal-path))
 
-; * hindent: A Haskell indenter  
+; * hindent: A Haskell indenter
 ;   m-q to reformat a block
 (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
 
@@ -229,7 +235,7 @@ return the absolute value of offset, converted to string."
 ; * Ghci-completion
 (add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion)
 
-; * Compile 
+; * Compile
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-o") 'haskell-compile))
 (eval-after-load 'haskell-cabal
@@ -242,6 +248,3 @@ return the absolute value of offset, converted to string."
 ; * remove f@*^! warnings
 (setq python-shell-completion-native-enable nil)
 (define-key elpy-mode-map (kbd "C-c C-l")   'elpy-shell-send-region-or-buffer)
- 
-
-
