@@ -20,6 +20,7 @@ apacheStart='sudo /usr/local/apache/apachectl start'
 
 # Aliases 
 # To refresh: source ~/.bash_profile
+alias emacsD='launchctl load /Library/LaunchAgents/gnu.emacs.daemon.plist'
 alias wb='cd /usr/local/apache2/'
 alias cl='clear'
 alias lss='ls -lS'     
