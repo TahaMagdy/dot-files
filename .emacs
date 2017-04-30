@@ -13,6 +13,7 @@
 (setq-default indent-tabs-mode nil)
 
 
+
 ;; Hide startup screen
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
@@ -65,7 +66,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (markdown-mode emacsql-mysql jedi 0blayout elpy haskell-emacs company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
+    (ecb ruby-dev flyspell-correct latex-preview-pane auctex markdown-mode emacsql-mysql jedi 0blayout elpy haskell-emacs company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
 
 ;;;;;;;;;;;;;;;;;
 (load "package")
@@ -132,6 +133,11 @@
 (setq-default evil-escape-key-sequence "jk" )
 (setq-default evil-escape-delay 0.1)
 
+;; LaTeX
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq TeX-save-query nil)
+(setq TeX-PDF-mode t)
 
 
 ;;;;;;;;;;;;;;;;;
