@@ -3,10 +3,13 @@
 	smudge = git-lfs smudge %f
 	required = true
 [user]
-	name = TahaMgady
+	name = TahaMagdy
+	email = t.tahamagdyt@outlook.com
 [push]
 	default = upstream
 [core]
 	editor = /usr/local/bin/vim # Vim - version 7.4.2181 
 [merge]
 	conflictstyle = diff3
+[credential]
+	helper = osxkeychain
