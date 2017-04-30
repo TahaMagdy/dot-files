@@ -1,5 +1,6 @@
 " Author : Taha Magdy
 
+"Test"
 
 " Activating Pathogen -- Runtime manipulations"{{{
 " Important for some plugins like (NERDTree)
