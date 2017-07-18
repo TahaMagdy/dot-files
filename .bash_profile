@@ -35,8 +35,14 @@ alias apacheStop='sudo /usr/local/apache2/bin/apachectl stop'
 alias apacheRestart='sudo /usr/local/apache2/bin/apachectl restart'
 alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs'
 
-PATH=/usr/local/apache2/:/Users/taha/ComputerScience/Sage/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:$PATH
+
+
+PATH=/usr/local/apache2/:/Users/taha/ComputerScience/Sage/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:~/ComputerScience/programs:$PATH
 export PATH
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+alias ls='CLICOLOR_FORCE=1 ls -G'
+alias less='less -R'
 
 # tab completion
 source ~/.git-completion.bash
