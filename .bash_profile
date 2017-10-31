@@ -1,16 +1,16 @@
 # Author : Taha
 
   # .bash_profile runs when you start a login/session shell;
-  # every time you open a shell (tab or a new window, It's a login shell and .bash_profile executes; 
-  # BUT 
+  # every time you open a shell (tab or a new window, It's a login shell and .bash_profile executes;
+  # BUT
   # .bashrc runs every time you start a sub-shell;
-  # A Non login shell is started by a program without a login, 
-  # PS1='taha@localhost \W \$ ' # prompt 
+  # A Non login shell is started by a program without a login,
+  # PS1='taha@localhost \W \$ ' # prompt
 
 
 export CLICOLOR=1
 
-# The awesomeness 
+# The awesomeness
 set -o vi
 set bell-style none
 set keymap vi-command
@@ -18,31 +18,37 @@ bind -m vi-insert "\C-l":clear-screen # DO NOT PUT A SPACE AFTER THE ':'
 
 apacheStart='sudo /usr/local/apache/apachectl start'
 
-# Aliases 
+# Aliases
 # To refresh: source ~/.bash_profile
 alias emacsD='launchctl load /Library/LaunchAgents/gnu.emacs.daemon.plist'
 alias wb='cd /usr/local/apache2/'
 alias cl='clear'
-alias lss='ls -lS'     
+alias lss='ls -lS'
 alias lsd='ls -lSd */'
 alias vim='/usr/local/bin/vim'
 alias vr='vim ~/.vimrc'
 alias bp='vim ~/.bash_profile'
-alias note='cd ~/ComputerScience/notes' 
+alias note='cd ~/ComputerScience/notes'
 alias grep='grep -n  -P --color=always'
 alias apacheStart='sudo /usr/local/apache2/bin/apachectl start'
 alias apacheStop='sudo /usr/local/apache2/bin/apachectl stop'
 alias apacheRestart='sudo /usr/local/apache2/bin/apachectl restart'
 alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs'
+alias emacsclient='/Applications/MacPorts/Emacs.app/Contents/MacOS/bin/emacsclient '
+alias off='networksetup -setairportpower en0 off'
+alias on='networksetup -setairportpower en0 on'
+alias env =  'source activate gl-env'
+alias octave='octave-cli'
 
 
 
-PATH=/usr/local/apache2/:/Users/taha/ComputerScience/Sage/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:~/ComputerScience/programs:$PATH
+PATH=/usr/local/apache2/:/Users/taha/ComputerScience/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:~/ComputerScience/programs:$PATH
 export PATH
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
 alias ls='CLICOLOR_FORCE=1 ls -G'
 alias less='less -R'
+
 
 # tab completion
 source ~/.git-completion.bash
@@ -67,3 +73,12 @@ echo "  Hello, I'm .bash_profile and I love you <3!
     You can put some reminders in here!
     .
     "
+
+# added by Anaconda2 4.4.0 installer
+export PATH="/Users/taha/anaconda/bin:$PATH"
+
+# added by Anaconda2 4.4.0 installer
+export PATH="/Users/taha/anaconda/bin:$PATH"
+
+# added by Anaconda2 4.4.0 installer
+export PATH="/Users/taha/anaconda/bin:$PATH"
