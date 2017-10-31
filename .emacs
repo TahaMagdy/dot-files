@@ -1,6 +1,10 @@
 ;; Emacs.app open files in an existing frame instead of a new frame
 (setq ns-pop-up-frames nil)
 
+
+;; Hide the mac-menu-bar
+(setq ns-auto-hide-menu-bar t)
+
 ;; Removing the tool bar
 (tool-bar-mode -1)
 ;; Removing scroll bar
@@ -9,8 +13,10 @@
 ;; Column number
 (setq column-number-mode t)
 
-;; NO F*!@$% tab
+;; NO F*!@$% tabs
 (setq-default indent-tabs-mode nil)
+
+(setq exec-path-from-shell-arguments '("-l"))
 
 
 
@@ -58,6 +64,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-ghc-show-info t)
+ '(custom-safe-themes
+   (quote
+    ("c924950f6b5b92a064c5ad7063bb34fd3facead47cd0d761a31e7e76252996f7" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "b747fb36e99bc7f497248eafd6e32b45613ee086da74d1d92a8da59d37b9a829" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "4c7a1f0559674bf6d5dd06ec52c8badc5ba6e091f954ea364a020ed702665aa1" "f7eb64b27901812bbdbb91654c2a2e98555fa8d5b256144199925d6c7c0bd3bd" default)))
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
  '(haskell-process-suggest-remove-import-lines t)
@@ -66,7 +75,11 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (helm-sage ecb ruby-dev flyspell-correct latex-preview-pane auctex markdown-mode emacsql-mysql jedi 0blayout elpy haskell-emacs company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
+    (company-quickhelp ruby-compilation ob-ipython ein-mumamo ein ipython solarized-theme silkworm-theme dracula-theme company-jedi flycheck swift3-mode helm-sage ecb ruby-dev flyspell-correct latex-preview-pane auctex markdown-mode emacsql-mysql jedi 0blayout company-ghci yasnippet use-package relative-line-numbers org magit linum-relative iedit helm-swoop find-file-in-project evil-escape eldoc-extension company-ghc))))
+
+
+
+
 
 ;;;;;;;;;;;;;;;;;
 (load "package")
@@ -106,7 +119,7 @@
 (global-set-key (kbd "s-[")     'window-split-toggle)
 (global-set-key (kbd "s-b")     'switch-to-buffer)              ; b -> buffer list
 (global-set-key (kbd "s-w")     'switch-to-buffer-other-window) ; w -> window
-(global-set-key (kbd "s-k")     'kill-buffer)                   ; k -> kill
+(global-set-key (kbd "s-k")     'kill-this-buffer)                   ; k -> kill
 (global-set-key (kbd "s-p")     'company-select-previous)
 (global-set-key (kbd "s-n")     'company-select-next)
 (global-set-key (kbd "s-0")     'scroll-other-window-down)
@@ -140,11 +153,29 @@
 (setq TeX-PDF-mode t)
 
 
+;; IPython
+(setq ein:use-auto-complete t)
+; C-c C-k ein:worksheet-kill-cell -> delete a cell
+;C-c C-a         ein:worksheet-insert-cell-above
+;C-c C-b         ein:worksheet-insert-cell-below
+;C-c C-c         ein:worksheet-execute-cell
+;C-c C-e         ein:worksheet-toggle-output
+;C-c TAB         ein:completer-complete
+;C-c C-k         ein:worksheet-kill-cell
+;C-c C-l         ein:worksheet-clear-output
+;C-c C-n         ein:worksheet-goto-next-input
+;C-c C-p         ein:worksheet-goto-prev-input
+;C-c C-t         ein:worksheet-toggle-cell-type
+;C-c C-u         ein:worksheet-change-cell-type
+;C-c <down>      ein:worksheet-move-cell-down
+;C-c <up>        ein:worksheet-move-cell-up
+
+
 ;;;;;;;;;;;;;;;;;
 
 ;; Add themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'espresso t)
+;(load-theme 'solarized-dark t)
 (set-face-attribute 'region nil :background "#d4d4d4") ;; selection color
 
 ;; Relative numbers
@@ -199,58 +230,29 @@ return the absolute value of offset, converted to string."
 
 ;;;;;;;
 
-;; Haskell
-; * Hasktags: Generates ctags for haskell programs
-;   c-] to jump to the definition of a function
-;   c-o to jump back
-(let ((my-cabal-path (expand-file-name "~/.cabal/bin")))
-    (setenv "path" (concat my-cabal-path path-separator (getenv "path")))
-      (add-to-list 'exec-path my-cabal-path))
 
-; * hindent: A Haskell indenter
-;   m-q to reformat a block
-(add-hook 'haskell-mode-hook 'haskell-indentation-mode)
-
-; * Interactive mode
-(eval-after-load 'haskell-mode '(progn
-  (define-key haskell-mode-map (kbd "C-c C-l")     'haskell-process-load-or-reload)
-  (define-key haskell-mode-map (kbd "C-c C-z")     'haskell-interactive-switch)
-  (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
-  (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
-  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
-  (define-key haskell-mode-map (kbd "C-c C-n c")   'haskell-process-cabal)))
-(eval-after-load 'haskell-cabal '(progn
-  (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-  (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
-  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
-  (define-key haskell-cabal-mode-map (kbd "C-c c")   'haskell-process-cabal)))
-
-; *  It is so important
-
-                        ;; options
-                        ;;ghci       [ok]
-                        ;;cabal-repl [ok]
-                        ;;cabal-dev
-                        ;;cabal-ghci
-                        ;;stack-ghci
-
-; * Indentation
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-
-
-; * Ghci-completion
-(add-hook 'inferior-haskell-mode-hook 'turn-on-ghci-completion)
-
-; * Compile
-(eval-after-load 'haskell-mode
-  '(define-key haskell-mode-map (kbd "C-c C-o") 'haskell-compile))
-(eval-after-load 'haskell-cabal
-  '(define-key haskell-cabal-mode-map (kbd "C-c C-o") 'haskell-compile))
 
 
 ;; Python
 ; * pyhton mode
+
+; FlyCheck
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+
+; Jedi
+;(add-hook 'python-mode-hook 'jedi:setup)
+;(setq jedi:complete-on-dot t)
+
+(require 'package)
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+(package-initialize)
 (elpy-enable)
-; * remove f@*^! warnings
-(setq python-shell-completion-native-enable nil)
-(define-key elpy-mode-map (kbd "C-c C-l")   'elpy-shell-send-region-or-buffer)
+
+(setq elpy-rpc-backend "jedi")
+(company-quickhelp-mode 1)
+(eval-after-load 'company
+  '(define-key company-active-map (kbd "C-c h") #'company-quickhelp-manual-begin))
