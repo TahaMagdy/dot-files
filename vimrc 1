@@ -1,6 +1,6 @@
 " Author : Taha Magdy
 
-"test
+
 
 " Activating Pathogen -- Runtime manipulations"{{{
 " Important for some plugins like (NERDTree)
@@ -78,19 +78,7 @@ set t_Co=256 "" This solve the vim/tmux color problem ,tells Vim to use 256 colo
 
 
 ""}}}
-" Vundle configs "{{{
-set nocompatible              " be iMproved, required
-set showcmd " Doesn't work but after nocompatible
-filetype off                  " required
 
-"set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'Valloric/YouCompleteMe'
-call vundle#end()            " required
-filetype plugin indent on    " required
-"}}}
 " Special stuff for specific filetypes "{{{
 "autocmd BufEnter *.markdown colorscheme badwolf
 autocmd BufEnter *.hs           set nospell
