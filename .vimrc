@@ -21,7 +21,8 @@ set title
 set nospell
 set expandtab
 set tabstop=4
-"set list " show all kind of white spaces
+set hidden          " chnage buffers without the need of saving
+"set list           " show all kind of white spaces
 set shiftwidth=4
 set wrap
 set textwidth=81
