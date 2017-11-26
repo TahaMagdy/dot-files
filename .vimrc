@@ -21,8 +21,10 @@ set title
 set nospell
 set expandtab
 set tabstop=4
-set hidden          " chnage buffers without the need of saving
-"set list           " show all kind of white spaces
+" chnage buffers without the need of saving
+set hidden
+" show all kind of white spaces
+"set list           
 set shiftwidth=4
 set wrap
 set textwidth=81
@@ -36,22 +38,18 @@ set timeout timeoutlen=90 " delay <3
 
 
 
-
-
-
 " mappings
 """"""""""
 map <C-n> :bnext<CR>
 map <C-p> :bprev<CR>
-map <C-h> :noh<CR>
+map bk    :bdelete<Cr> 
+map  nm    :noh<Cr>
+imap nm    <Esc>:noh<Cr>
 map <C-x> :TableModeToggle<CR>
 map <C-c> :cd %:h<CR>
-map cm  :CommandT<Cr>
-map rmb :bdelete<Cr>
+" Buffer kill
 map s=  :set spell<Cr>
 map s-  :set nospell<Cr>
-"map O   O<Esc>
-"map o   o<Esc>
 map <C-h> <C-w><
 map <C-l> <C-w>>
 map <C-j> <C-w>+
@@ -66,7 +64,8 @@ imap <down>   <nop>
 imap <left>   <nop>
 imap <right>  <nop>
 imap jk     <Esc>
-
+imap bl <Esc>:Bufferlist<Cr>
+map  bl :Bufferlist<Cr>
 
 
 " SnipMate
