@@ -31,6 +31,12 @@ set incsearch
 set ttyfast
 set t_Co=256
 set foldcolumn=0
+set timeout timeoutlen=90 " delay <3
+
+
+
+
+
 
 
 " mappings
@@ -122,8 +128,8 @@ let g:ycm_filetype_blacklist = {
       \}
 let g:ycm_key_list_select_completion = ['<C-n>']
 let g:ycm_key_list_previous_completion = ['<C-p>']
-" trigger completion
-let g:ycm_key_invoke_completion = '<C-j>'
+" trigger completion [YCM! Complete!]
+let g:ycm_key_invoke_completion = '<C-k>'
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_use_ultisnips_completer = 0
 " specify symbols to trigger YCM based on the file type
