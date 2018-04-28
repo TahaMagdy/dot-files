@@ -21,34 +21,43 @@ apacheStart='sudo /usr/local/apache/apachectl start'
 # Aliases
 # To refresh: source ~/.bash_profile
 alias emacsD='launchctl load /Library/LaunchAgents/gnu.emacs.daemon.plist'
-alias wb='cd /usr/local/apache2/'
+alias wb='/Library/WebServer/Documents'
 alias cl='clear'
 alias lss='ls -lS'
 alias lsd='ls -lSd */'
-alias vim='/usr/local/bin/vim'
+alias vim='/Users/taha/Documents/sources/vim/src/vim'
 alias vr='vim ~/.vimrc'
 alias bp='vim ~/.bash_profile'
 alias note='cd ~/ComputerScience/notes'
 alias grep='grep -n  -P --color=always'
-alias apacheStart='sudo /usr/local/apache2/bin/apachectl start'
-alias apacheStop='sudo /usr/local/apache2/bin/apachectl stop'
-alias apacheRestart='sudo /usr/local/apache2/bin/apachectl restart'
+#alias apacheStart='sudo /usr/local/apache2/bin/apachectl start'
+#alias apacheStop='sudo /usr/local/apache2/bin/apachectl stop'
+#alias apacheRestart='sudo /usr/local/apache2/bin/apachectl restart'
 alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs'
 alias emacsclient='/Applications/MacPorts/Emacs.app/Contents/MacOS/bin/emacsclient '
 alias off='networksetup -setairportpower en0 off'
 alias on='networksetup -setairportpower en0 on'
-alias env =  'source activate gl-env'
+alias env='source activate gl-env'
 alias octave='octave-cli'
+alias ipython='ipython --TerminalInteractiveShell.editing_mode=vi'
+alias ipython3='ipython3 --TerminalInteractiveShell.editing_mode=vi'
+alias less='less -R'
+screen='/usr/local/bin/screen'
 
 
 
-PATH=/usr/local/apache2/:/Users/taha/ComputerScience/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:~/ComputerScience/programs:$PATH
-export PATH
+
+
+
+PATH=/usr/local/apache2/:/Users/taha/ComputerScience/SageMath:/Users/taha/.local/bin:/usr/local/Cellar/gnupg/1.4.21/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:Library/Frameworks/Python.framework/Versions/3.5/bin:~/.cabal/bin:/usr/local/mysql/bin:/opt/local/bin:/opt/local/sbin:~/ComputerScience/programs:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin/:/Library/Haskell/bin:/Users/taha/Library/Haskell/bin:$PATH
+
+PATH=$HOME/.cabal/bin:$PATH
+
+
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
 alias ls='CLICOLOR_FORCE=1 ls -G'
-alias less='less -R'
-
+export TERM=xterm-256color
 
 # tab completion
 source ~/.git-completion.bash
@@ -67,6 +76,8 @@ export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
     # '\$(__git_ps1)' adds git-related stuff
     # '\W' adds the name of the current directory
 
+# added by Anaconda2 4.4.0 installer
+export PATH="/Users/taha/anaconda/bin:~/Documents/sources/SageMath/:$PATH"
 ##################################################
 clear # Hiding last login time message; or $ touch .hushlogin instead
 echo "  Hello, I'm .bash_profile and I love you <3!
@@ -74,11 +85,7 @@ echo "  Hello, I'm .bash_profile and I love you <3!
     .
     "
 
-# added by Anaconda2 4.4.0 installer
-export PATH="/Users/taha/anaconda/bin:$PATH"
-
-# added by Anaconda2 4.4.0 installer
-export PATH="/Users/taha/anaconda/bin:$PATH"
-
-# added by Anaconda2 4.4.0 installer
-export PATH="/Users/taha/anaconda/bin:$PATH"
+# Setting PATH for Python 2.7
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+export PATH
