@@ -1,0 +1,22 @@
+password none
+escape ^Jj 
+termcapinfo xterm* ti@:te@
+caption always
+
+
+caption    string "%{= KW}%S | %-Lw%{=r}%n%f* %t%{-}%+LW"
+#caption string "%{WW}XXXXXXX"
+#hardstatus string "%{= KW} [%S] %{= Kw}|%{-} %-Lw%{= bW}%n%f %t%{-}%+Lw %=%C%a %Y-%M-%d"
+
+
+#hardstatus string "%{= KW}%S | %-Lw%{=r}%n%f* %t%{-}%+LW"
+#hardstatus = {alwayslastline, ignore}
+#hardstatus alwayslastline
+#caption= {always}
+#hardstatus string "%{.cW}%-w%{.yW}%n %t%{-}%+w %=%{..W}  %m/%d %C%a "
+
+#hardstatus string "%{= KW}%{= Kw}%{-}%-Lw%{= WK}%n%f %t%{-}%+Lw %=%{..W}%m/%d %C%a"
+
+#hardstatus string "%{= KW}%{= Kw}%{-}%-Lw%{= bW}%n%f %t%{-}%+Lw"
+#hardstatus string "%{= KW} %H [%`] %{= Kw}|%{-} %-Lw%{= bW}%n%f %t%{-}%+Lw %=%Y-%M-%d %C%a"
+#hardstatus string "%-Lw%n%f %t%+Lw %=%C%a %Y-%M-%d"
